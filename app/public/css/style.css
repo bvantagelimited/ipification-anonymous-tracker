@@ -1,0 +1,43 @@
+@import url("https://rsms.me/inter/inter.css");
+body * {
+  font-family: 'Inter', sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+.app-title {
+  font-size: 22px;
+  text-align: center;
+  font-weight: bold;
+  padding: 60px 0;
+}
+.app-footer {
+  font-size: 18px;
+  text-align: center;
+  padding-top: 60px;
+}
+.counter-block {
+  background-image: linear-gradient(to bottom, #26bfbd, #00e1b5);
+  border-radius: 50%;
+  width: 288px;
+  height: 288px;
+  text-align: center;
+  position: relative;
+}
+.counter-block .counter-content {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 80px;
+  font-weight: bold;
+  color: #fff;
+}
+.login-container {
+  width: 288px;
+  margin: 0px 36px;
+}
