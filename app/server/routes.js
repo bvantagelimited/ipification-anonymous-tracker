@@ -5,6 +5,7 @@ const appConfig = require('config');
 const _ = require('lodash');
 const ROOT_URL = appConfig.get('root_url');
 const uuidv4 = require('uuid/v4');
+const htmlEntities = require('html-entities');
 const {promisify} = require('util');
 const redis = require("redis");
 const redisClient = redis.createClient();
@@ -65,7 +66,7 @@ module.exports = function(app) {
 		if(req.query.error){
 			console.log('ip callback error');
 			console.log(req.query)
-			res.status(200).send(req.query.error);
+			res.status(200).send(htmlEntities.encode(req.query.error));
 			return;
 		}
 
