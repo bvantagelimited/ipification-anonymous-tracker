@@ -4,24 +4,24 @@
   "description": "",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.0",
-    "body-parser": "^1.18.3",
-    "config": "^2.0.1",
-    "cookie-parser": "^1.4.3",
-    "debug": "^4.1.1",
-    "express": "^4.16.3",
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.3",
+    "cookie-parser": "^1.4.5",
+    "debug": "^4.3.1",
+    "express": "^4.17.1",
     "html-entities": "^2.1.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.20",
     "nocache": "^2.1.0",
-    "pug": "^2.0.3",
-    "redis": "^2.8.0",
+    "pug": "^3.0.0",
+    "redis": "^3.0.2",
     "request": "^2.88.0",
-    "stylus": "^0.54.5",
-    "uuid": "^3.3.2"
+    "stylus": "^0.54.8",
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "version": "echo $npm_package_version",
-    "start": "nodemon visit-counter.js"
+    "start": "nodemon anonymous-tracker.js"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
