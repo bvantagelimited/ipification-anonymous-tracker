@@ -8,7 +8,7 @@ const { v4: uuidv4 } = require('uuid');
 const htmlEntities = require('html-entities');
 const {promisify} = require('util');
 const redis = require("redis");
-const redisClient = redis.createClient();
+const redisClient = redis.createClient({ url: process.env.REDIS_URL });
 
 const redisGetAsync = promisify(redisClient.get).bind(redisClient);
 

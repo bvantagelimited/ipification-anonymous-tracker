@@ -20,7 +20,8 @@
   },
   "scripts": {
     "version": "echo $npm_package_version",
-    "start": "nodemon anonymous-tracker.js"
+    "start": "node anonymous-tracker.js",
+    "dev": "nodemon anonymous-tracker.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.12",

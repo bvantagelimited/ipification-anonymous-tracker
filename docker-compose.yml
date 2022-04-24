@@ -1,0 +1,27 @@
+version: "3.3"
+services:
+  redis:
+    image: 'bitnami/redis:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - app
+  app:
+    restart: unless-stopped
+    build:
+      context: .
+    image: "ipification-anonymous-tracker"
+    environment:
+      PORT: 8080
+      REDIS_URL: redis://redis
+    ports:
+      - 8007:8080
+    links:
+      - redis
+    depends_on:
+      - redis
+    networks:
+      - app
+networks:
+  app:
+    driver: bridge
