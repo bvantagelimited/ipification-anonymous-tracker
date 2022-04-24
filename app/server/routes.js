@@ -1,4 +1,3 @@
-const querystring = require('querystring');
 const qs = require('qs');
 const axios = require("axios");
 const appConfig = require('config');
@@ -6,11 +5,8 @@ const _ = require('lodash');
 const ROOT_URL = appConfig.get('root_url');
 const { v4: uuidv4 } = require('uuid');
 const htmlEntities = require('html-entities');
-const {promisify} = require('util');
-const redis = require("redis");
-const redisClient = redis.createClient({ url: process.env.REDIS_URL });
-
-const redisGetAsync = promisify(redisClient.get).bind(redisClient);
+const asyncRedis = require("async-redis");
+const redisClient = asyncRedis.createClient({ url: process.env.REDIS_URL });
 
 const auth_server_url = appConfig.get('auth-server-url');
 const realm_name = appConfig.get('realm');
@@ -20,23 +16,19 @@ const page_title = appConfig.get('page_title');
 
 const HomeURL = `${ROOT_URL}/login`;
 
+redisClient.on('connect', () => {
+	console.log('Redis client connected');
+});
+
+redisClient.on('error', (err) => console.log('Redis client Error', err));
+
 module.exports = function(app) {
 
 	app.get('/', function(req, res){
 		res.redirect(HomeURL);
 	})
 
-	// main login page //
-	// app.get('/login', async (req, res) => {
-		
-	// 	res.render('visit', {
-	// 		ROOT_URL: ROOT_URL,
-	// 		page_title: page_title
-	// 	});
-		
-	// });
-
-	app.get('/login', (req, res) => {
+	app.get('/login', async (req, res) => {
 		const redirectClientURL = `${ROOT_URL}/ipification/callback`;
 		const state = uuidv4();
 		const nonce = uuidv4();
@@ -50,7 +42,7 @@ module.exports = function(app) {
 			nonce: nonce,
 		};
 
-		let authUrl = `${auth_server_url}/realms/${realm_name}/protocol/openid-connect/auth?` + querystring.stringify(params);
+		let authUrl = `${auth_server_url}/realms/${realm_name}/protocol/openid-connect/auth?` + qs.stringify(params);
 		console.log("auth url: ", authUrl)
 		res.redirect(authUrl);
 
@@ -89,13 +81,15 @@ module.exports = function(app) {
 			const { sub } = data;
 			const counterKey = `${sub}:count`;
 
-			redisClient.incr(counterKey)
+			await redisClient.incr(counterKey);
 
 			res.render('visit', {
 				ROOT_URL: ROOT_URL,
 				page_title: page_title,
-				total: await redisGetAsync(counterKey)
+				total: await redisClient.get(counterKey)
 			});
+
+			
 
 		} catch (err) {
 			console.log('ip callback error');

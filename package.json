@@ -4,6 +4,7 @@
   "description": "",
   "private": true,
   "dependencies": {
+    "async-redis": "^2.0.0",
     "axios": "^0.26.1",
     "body-parser": "^1.20.0",
     "config": "^3.3.7",
