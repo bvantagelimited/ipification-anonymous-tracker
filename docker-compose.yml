@@ -2,6 +2,7 @@ version: "3.3"
 services:
   redis:
     image: 'bitnami/redis:latest'
+    restart: unless-stopped
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     networks:
