@@ -5,19 +5,19 @@
   "private": true,
   "dependencies": {
     "async-redis": "^2.0.0",
-    "axios": "^0.26.1",
-    "body-parser": "^1.20.0",
-    "config": "^3.3.7",
+    "axios": "^1.5.0",
+    "body-parser": "^1.20.2",
+    "config": "^3.3.9",
     "cookie-parser": "^1.4.6",
     "debug": "^4.3.4",
-    "express": "^4.17.3",
-    "html-entities": "^2.3.3",
+    "express": "^4.18.2",
+    "html-entities": "^2.4.0",
     "lodash": "^4.17.21",
-    "nocache": "^3.0.3",
+    "nocache": "^4.0.0",
     "pug": "^3.0.2",
-    "redis": "^4.0.6",
-    "stylus": "^0.57.0",
-    "uuid": "^8.3.2"
+    "redis": "^4.6.8",
+    "stylus": "^0.59.0",
+    "uuid": "^9.0.0"
   },
   "scripts": {
     "version": "echo $npm_package_version",
