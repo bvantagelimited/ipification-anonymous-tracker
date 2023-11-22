@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "async-redis": "^2.0.0",
-    "axios": "^1.5.0",
+    "axios": "^1.6.2",
     "body-parser": "^1.20.2",
     "config": "^3.3.9",
     "cookie-parser": "^1.4.6",
@@ -15,9 +15,9 @@
     "lodash": "^4.17.21",
     "nocache": "^4.0.0",
     "pug": "^3.0.2",
-    "redis": "^4.6.8",
-    "stylus": "^0.59.0",
-    "uuid": "^9.0.0"
+    "redis": "^4.6.11",
+    "stylus": "^0.62.0",
+    "uuid": "^9.0.1"
   },
   "scripts": {
     "version": "echo $npm_package_version",
@@ -25,6 +25,6 @@
     "dev": "nodemon anonymous-tracker.js"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^3.0.1"
   }
 }
